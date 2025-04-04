@@ -29,6 +29,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+]
+
+CORS_ALLOW_HEADERS = [
+    "authorization",
+    "content-type",
+]
 
 # Application definition
 
@@ -132,7 +145,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Vite default port
-    "https:/dave7103.github.io",
+    "https://dave7103.github.io",
     "http://localhost:3000",
 ]
 CORS_ALLOW_CREDENTIALS = True
