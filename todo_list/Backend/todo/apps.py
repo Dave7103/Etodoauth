@@ -1,6 +1,8 @@
-from django.apps import AppConfig
+from django.db import models
 
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    completed = models.BooleanField(default=False)
 
-class TodoConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'todo'
+    def __str__(self):
+        return self.title
