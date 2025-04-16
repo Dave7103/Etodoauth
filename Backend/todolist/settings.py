@@ -96,7 +96,7 @@ DATABASES = {
     }
 }
 
-DATABASES["default"] = dj_database_url.parse("postgresql://etodo_app_django_render_user:GBRKuq6R9p4dS3JSFZHpO318Qq54RtJ5@dpg-cvnq46p5pdvs73fqtr3g-a.singapore-postgres.render.com/etodo_app_django_render")
+DATABASES["default"] = dj_database_url.parse("postgresql://etodoauth_user:zRyHz85wpqGZA8r0mYEg7antB7dkn65t@dpg-cvvs4j49c44c73f8iu5g-a.singapore-postgres.render.com/etodoauth")
 
 
 # Password validation
