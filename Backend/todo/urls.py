@@ -1,5 +1,5 @@
 """
-URL configuration for todolist project.
+URL configuration for todo_project project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -19,6 +19,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from todo.views import PostViewSet
 from rest_framework.authtoken.views import obtain_auth_token
+from .views import SecureHelloView
 
 router = DefaultRouter()
 router.register(r'post', PostViewSet)
@@ -27,4 +28,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api-token-auth/', obtain_auth_token),
+    path('secure-hello/', SecureHelloView.as_view()),
 ]

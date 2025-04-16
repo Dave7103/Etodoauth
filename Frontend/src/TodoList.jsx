@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
 const API_URL = "https://etodo-app.onrender.com/api/post/";
 
 export default function TodoList() {
@@ -10,7 +9,20 @@ export default function TodoList() {
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState("");
   const [filter, setFilter] = useState("All");
-  const [darkMode, setDarkMode] = useState(localStorage.getItem("theme") === "dark");
+
+  // Get dark mode state from localStorage
+  const storedTheme = localStorage.getItem("theme");
+  const initialDarkMode = storedTheme === "dark";
+  const [darkMode, setDarkMode] = useState(initialDarkMode);
+
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -23,19 +35,6 @@ export default function TodoList() {
     };
     fetchTasks();
   }, []);
-
-  useEffect(() => {
-    if (darkMode) {
-        document.body.classList.add("dark-mode");
-      } else {
-        document.body.classList.remove("dark-mode");
-      }
-
-      localStorage.setItem("theme", darkMode ? "dark" : "light");
-}, [darkMode]);
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
 
   const addTask = async () => {
     if (task.trim() === "") return;
@@ -106,7 +105,7 @@ export default function TodoList() {
   });
 
   return (
-    <div className="app">
+    <div className={`app ${darkMode ? "dark-mode" : ""}`}>
       <div className="header">
         <h2>To-Do List</h2>
         <button className="dark-mode-toggle" onClick={toggleDarkMode}>
@@ -152,8 +151,8 @@ export default function TodoList() {
             ) : (
               <>
                 <span>{task.title}</span>
-                <button onClick={() => editTask(task.id)}>Edit</button>
-                <button onClick={() => removeTask(task.id)}>Delete</button>
+                <button className="edit" onClick={() => editTask(task.id)}>Edit</button>
+                <button className="delete" onClick={() => removeTask(task.id)}>Delete</button>
               </>
             )}
           </li>
