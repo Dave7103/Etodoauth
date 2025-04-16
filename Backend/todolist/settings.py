@@ -144,6 +144,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Vite default port
     "https://dave7103.github.io",
     "http://localhost:3000",
+    "http://127.0.0.1:8000",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
