@@ -110,7 +110,7 @@ DATABASES = {
 }
 
 
-DATABASES["default"] = dj_database_url.parse("postgresql://authtoken_user:aioEbwG2Xx8UuAD6wNVvotiJVWtjzmBR@dpg-cvvadjgdl3ps739g5o3g-a.virginia-postgres.render.com/authtoken")
+DATABASES["default"] = dj_database_url.parse("postgresql://etodoauth_user:zRyHz85wpqGZA8r0mYEg7antB7dkn65t@dpg-cvvs4j49c44c73f8iu5g-a.singapore-postgres.render.com/etodoauth")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
